@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  LYNavigationController.h
 //  TransferData
 //
 //  Created by lychow on 11/10/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface LYNavigationController : UINavigationController
 
 @end
-

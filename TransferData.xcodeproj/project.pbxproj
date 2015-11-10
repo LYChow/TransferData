@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		4F8134A31BF2260E0003E9B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134A21BF2260E0003E9B3 /* main.m */; };
-		4F8134A61BF2260E0003E9B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134A51BF2260E0003E9B3 /* AppDelegate.m */; };
-		4F8134A91BF2260E0003E9B3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134A81BF2260E0003E9B3 /* ViewController.m */; };
 		4F8134AC1BF2260E0003E9B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F8134AA1BF2260E0003E9B3 /* Main.storyboard */; };
 		4F8134AE1BF2260E0003E9B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F8134AD1BF2260E0003E9B3 /* Assets.xcassets */; };
 		4F8134B11BF2260E0003E9B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F8134AF1BF2260E0003E9B3 /* LaunchScreen.storyboard */; };
 		4F8134BC1BF2260E0003E9B3 /* TransferDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134BB1BF2260E0003E9B3 /* TransferDataTests.m */; };
 		4F8134C71BF2260E0003E9B3 /* TransferDataUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134C61BF2260E0003E9B3 /* TransferDataUITests.m */; };
+		4F8134DA1BF2276B0003E9B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134D71BF2276B0003E9B3 /* AppDelegate.m */; };
+		4F8134DE1BF228150003E9B3 /* AppTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134DD1BF228150003E9B3 /* AppTableViewController.m */; };
+		4F8134E11BF229880003E9B3 /* LYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134E01BF229880003E9B3 /* LYNavigationController.m */; };
+		4F8135291BF22F880003E9B3 /* DownloadListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8135281BF22F880003E9B3 /* DownloadListVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +39,6 @@
 /* Begin PBXFileReference section */
 		4F81349E1BF2260E0003E9B3 /* TransferData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransferData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F8134A21BF2260E0003E9B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4F8134A41BF2260E0003E9B3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4F8134A51BF2260E0003E9B3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4F8134A71BF2260E0003E9B3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4F8134A81BF2260E0003E9B3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4F8134AB1BF2260E0003E9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F8134AD1BF2260E0003E9B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F8134B01BF2260E0003E9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +49,14 @@
 		4F8134C21BF2260E0003E9B3 /* TransferDataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferDataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F8134C61BF2260E0003E9B3 /* TransferDataUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransferDataUITests.m; sourceTree = "<group>"; };
 		4F8134C81BF2260E0003E9B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F8134D61BF2276B0003E9B3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4F8134D71BF2276B0003E9B3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4F8134DC1BF228150003E9B3 /* AppTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTableViewController.h; sourceTree = "<group>"; };
+		4F8134DD1BF228150003E9B3 /* AppTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTableViewController.m; sourceTree = "<group>"; };
+		4F8134DF1BF229880003E9B3 /* LYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNavigationController.h; sourceTree = "<group>"; };
+		4F8134E01BF229880003E9B3 /* LYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYNavigationController.m; sourceTree = "<group>"; };
+		4F8135271BF22F880003E9B3 /* DownloadListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListVC.h; sourceTree = "<group>"; };
+		4F8135281BF22F880003E9B3 /* DownloadListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +107,14 @@
 		4F8134A01BF2260E0003E9B3 /* TransferData */ = {
 			isa = PBXGroup;
 			children = (
-				4F8134A41BF2260E0003E9B3 /* AppDelegate.h */,
-				4F8134A51BF2260E0003E9B3 /* AppDelegate.m */,
-				4F8134A71BF2260E0003E9B3 /* ViewController.h */,
-				4F8134A81BF2260E0003E9B3 /* ViewController.m */,
-				4F8134AA1BF2260E0003E9B3 /* Main.storyboard */,
-				4F8134AD1BF2260E0003E9B3 /* Assets.xcassets */,
-				4F8134AF1BF2260E0003E9B3 /* LaunchScreen.storyboard */,
-				4F8134B21BF2260E0003E9B3 /* Info.plist */,
+				4F8134D61BF2276B0003E9B3 /* AppDelegate.h */,
+				4F8134D71BF2276B0003E9B3 /* AppDelegate.m */,
+				4F8134DC1BF228150003E9B3 /* AppTableViewController.h */,
+				4F8134DD1BF228150003E9B3 /* AppTableViewController.m */,
+				4F8134DF1BF229880003E9B3 /* LYNavigationController.h */,
+				4F8134E01BF229880003E9B3 /* LYNavigationController.m */,
+				4F8135271BF22F880003E9B3 /* DownloadListVC.h */,
+				4F8135281BF22F880003E9B3 /* DownloadListVC.m */,
 				4F8134A11BF2260E0003E9B3 /* Supporting Files */,
 			);
 			path = TransferData;
@@ -117,6 +123,10 @@
 		4F8134A11BF2260E0003E9B3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4F8134AA1BF2260E0003E9B3 /* Main.storyboard */,
+				4F8134AD1BF2260E0003E9B3 /* Assets.xcassets */,
+				4F8134AF1BF2260E0003E9B3 /* LaunchScreen.storyboard */,
+				4F8134B21BF2260E0003E9B3 /* Info.plist */,
 				4F8134A21BF2260E0003E9B3 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -273,9 +283,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F8134A91BF2260E0003E9B3 /* ViewController.m in Sources */,
-				4F8134A61BF2260E0003E9B3 /* AppDelegate.m in Sources */,
+				4F8134E11BF229880003E9B3 /* LYNavigationController.m in Sources */,
+				4F8134DA1BF2276B0003E9B3 /* AppDelegate.m in Sources */,
+				4F8135291BF22F880003E9B3 /* DownloadListVC.m in Sources */,
 				4F8134A31BF2260E0003E9B3 /* main.m in Sources */,
+				4F8134DE1BF228150003E9B3 /* AppTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
