@@ -33,6 +33,7 @@
 		4F32C7001BF99E0C00E31118 /* LYDownloadExtentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F32C6FE1BF99E0B00E31118 /* LYDownloadExtentionCell.m */; };
 		4F32C7011BF99E0C00E31118 /* LYDownloadExtentionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F32C6FF1BF99E0B00E31118 /* LYDownloadExtentionCell.xib */; };
 		4F32C7041BF9A01000E31118 /* LYDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F32C7031BF9A01000E31118 /* LYDownloadModel.m */; };
+		4F634F3B1BFF10AD00A68EF1 /* LYDownloadingStatusVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F634F3A1BFF10AD00A68EF1 /* LYDownloadingStatusVC.m */; };
 		4F8134A31BF2260E0003E9B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134A21BF2260E0003E9B3 /* main.m */; };
 		4F8134AC1BF2260E0003E9B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F8134AA1BF2260E0003E9B3 /* Main.storyboard */; };
 		4F8134AE1BF2260E0003E9B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F8134AD1BF2260E0003E9B3 /* Assets.xcassets */; };
@@ -42,6 +43,9 @@
 		4F8134DA1BF2276B0003E9B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134D71BF2276B0003E9B3 /* AppDelegate.m */; };
 		4F8134DE1BF228150003E9B3 /* AppTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134DD1BF228150003E9B3 /* AppTableViewController.m */; };
 		4F8134E11BF229880003E9B3 /* LYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134E01BF229880003E9B3 /* LYNavigationController.m */; };
+		4FE886471BF9B057009C83BF /* LYUploadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE886451BF9B057009C83BF /* LYUploadVC.m */; };
+		4FE886481BF9B057009C83BF /* LYUploadVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE886461BF9B057009C83BF /* LYUploadVC.xib */; };
+		4FE886511BF9CC86009C83BF /* LYNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE886501BF9CC86009C83BF /* LYNoDataView.m */; };
 		4FFB841E1BF3443F00D3A557 /* LYSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB841D1BF3443F00D3A557 /* LYSliderView.m */; };
 		4FFB84271BF383FA00D3A557 /* UIView+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB84261BF383FA00D3A557 /* UIView+Extention.m */; };
 		4FFB842A1BF3841500D3A557 /* UIBarButtonItem+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB84291BF3841500D3A557 /* UIBarButtonItem+Extention.m */; };
@@ -88,6 +92,8 @@
 		4F32C6FF1BF99E0B00E31118 /* LYDownloadExtentionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LYDownloadExtentionCell.xib; sourceTree = "<group>"; };
 		4F32C7021BF9A01000E31118 /* LYDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDownloadModel.h; sourceTree = "<group>"; };
 		4F32C7031BF9A01000E31118 /* LYDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDownloadModel.m; sourceTree = "<group>"; };
+		4F634F391BFF10AD00A68EF1 /* LYDownloadingStatusVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDownloadingStatusVC.h; sourceTree = "<group>"; };
+		4F634F3A1BFF10AD00A68EF1 /* LYDownloadingStatusVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDownloadingStatusVC.m; sourceTree = "<group>"; };
 		4F81349E1BF2260E0003E9B3 /* TransferData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransferData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F8134A21BF2260E0003E9B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4F8134AB1BF2260E0003E9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +112,11 @@
 		4F8134DD1BF228150003E9B3 /* AppTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTableViewController.m; sourceTree = "<group>"; };
 		4F8134DF1BF229880003E9B3 /* LYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNavigationController.h; sourceTree = "<group>"; };
 		4F8134E01BF229880003E9B3 /* LYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYNavigationController.m; sourceTree = "<group>"; };
+		4FE886441BF9B057009C83BF /* LYUploadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYUploadVC.h; sourceTree = "<group>"; };
+		4FE886451BF9B057009C83BF /* LYUploadVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYUploadVC.m; sourceTree = "<group>"; };
+		4FE886461BF9B057009C83BF /* LYUploadVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LYUploadVC.xib; sourceTree = "<group>"; };
+		4FE8864F1BF9CC86009C83BF /* LYNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNoDataView.h; sourceTree = "<group>"; };
+		4FE886501BF9CC86009C83BF /* LYNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYNoDataView.m; sourceTree = "<group>"; };
 		4FFB841C1BF3443F00D3A557 /* LYSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSliderView.h; sourceTree = "<group>"; };
 		4FFB841D1BF3443F00D3A557 /* LYSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSliderView.m; sourceTree = "<group>"; };
 		4FFB84211BF36FBF00D3A557 /* LYConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYConst.h; sourceTree = "<group>"; };
@@ -159,6 +170,8 @@
 				4FFB841D1BF3443F00D3A557 /* LYSliderView.m */,
 				4F30DD181BFC75D50049A7BD /* LYBottomView.h */,
 				4F30DD191BFC75D50049A7BD /* LYBottomView.m */,
+				4FE8864F1BF9CC86009C83BF /* LYNoDataView.h */,
+				4FE886501BF9CC86009C83BF /* LYNoDataView.m */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -335,6 +348,8 @@
 		4FFB84331BF45A9500D3A557 /* DownLoad */ = {
 			isa = PBXGroup;
 			children = (
+				4F634F391BFF10AD00A68EF1 /* LYDownloadingStatusVC.h */,
+				4F634F3A1BFF10AD00A68EF1 /* LYDownloadingStatusVC.m */,
 			);
 			name = DownLoad;
 			sourceTree = "<group>";
@@ -342,6 +357,9 @@
 		4FFB84341BF45AF300D3A557 /* Upload */ = {
 			isa = PBXGroup;
 			children = (
+				4FE886441BF9B057009C83BF /* LYUploadVC.h */,
+				4FE886451BF9B057009C83BF /* LYUploadVC.m */,
+				4FE886461BF9B057009C83BF /* LYUploadVC.xib */,
 			);
 			name = Upload;
 			sourceTree = "<group>";
@@ -490,6 +508,7 @@
 				4F32C6FC1BF99DE700E31118 /* LYDownloadCell.xib in Resources */,
 				4F32C7011BF99E0C00E31118 /* LYDownloadExtentionCell.xib in Resources */,
 				4F8134B11BF2260E0003E9B3 /* LaunchScreen.storyboard in Resources */,
+				4FE886481BF9B057009C83BF /* LYUploadVC.xib in Resources */,
 				4F8134AE1BF2260E0003E9B3 /* Assets.xcassets in Resources */,
 				4F1AF8EE1BF586E1000BA4B0 /* MBProgressHUD in Resources */,
 				4F8134AC1BF2260E0003E9B3 /* Main.storyboard in Resources */,
@@ -578,13 +597,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FE886511BF9CC86009C83BF /* LYNoDataView.m in Sources */,
 				4F8134E11BF229880003E9B3 /* LYNavigationController.m in Sources */,
 				4F1AF8EC1BF58683000BA4B0 /* NSString+Hash.m in Sources */,
 				4F8134DA1BF2276B0003E9B3 /* AppDelegate.m in Sources */,
 				4FFB84271BF383FA00D3A557 /* UIView+Extention.m in Sources */,
 				4F30DD1E1BFDC00F0049A7BD /* LYDownloadTool.m in Sources */,
 				4FFB841E1BF3443F00D3A557 /* LYSliderView.m in Sources */,
+				4FE886471BF9B057009C83BF /* LYUploadVC.m in Sources */,
 				4FFB842A1BF3841500D3A557 /* UIBarButtonItem+Extention.m in Sources */,
+				4F634F3B1BFF10AD00A68EF1 /* LYDownloadingStatusVC.m in Sources */,
 				4FFB84371BF45BF100D3A557 /* LYVideoDownloadVC.m in Sources */,
 				4F32C7041BF9A01000E31118 /* LYDownloadModel.m in Sources */,
 				4F30DD211BFDC0220049A7BD /* LYUploadTool.m in Sources */,
@@ -667,7 +689,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xueyin Xu (SG4KE3XX7G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xueyin Xu (SG4KE3XX7G)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -689,6 +712,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "1d857901-23da-4e10-af8e-eed01d6833c8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -711,7 +735,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xueyin Xu (SG4KE3XX7G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xueyin Xu (SG4KE3XX7G)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -726,6 +751,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "1d857901-23da-4e10-af8e-eed01d6833c8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -737,7 +763,7 @@
 			baseConfigurationReference = 89670F520F8D5F12E1F21F90 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xueyin Xu (SG4KE3XX7G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xueyin Xu (SG4KE3XX7G)";
 				INFOPLIST_FILE = TransferData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -745,7 +771,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TransferData",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LYChow.TransferData;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meicai.supplier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ed19c0fa-1641-4a5f-bb5d-dad044c65e8d";
 			};
@@ -756,7 +782,7 @@
 			baseConfigurationReference = E0D0EB38F0D1ABB3068E9A67 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xueyin Xu (SG4KE3XX7G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xueyin Xu (SG4KE3XX7G)";
 				INFOPLIST_FILE = TransferData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -764,7 +790,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TransferData",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LYChow.TransferData;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meicai.supplier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ed19c0fa-1641-4a5f-bb5d-dad044c65e8d";
 			};

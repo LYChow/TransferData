@@ -7,10 +7,9 @@
 //
 
 #import "LYDownloadCell.h"
-
+#import "LYConst.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-#define kBaseUrl  @"http://localhost:8080/MJServer/"
 @interface LYDownloadCell ()
 
 /*!
@@ -21,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *videoLengthLabel;
 @property (weak, nonatomic) IBOutlet UIButton *changeCellStatusBtn;
-@property (weak, nonatomic) IBOutlet UIButton *changeCellStatusSignBtn;
+
 - (IBAction)changeEditStatus:(id)sender;
 
 @end
@@ -50,7 +49,6 @@
     self.videoLengthLabel.text=[NSString stringWithFormat:@"时长:%@秒",_model.length];
 
 }
-
 
 
 - (IBAction)changedExtentionStatus:(id)sender

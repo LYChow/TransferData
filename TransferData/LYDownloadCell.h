@@ -34,11 +34,17 @@
 
 @property(nonatomic,weak) id <LYDownloadCellDelegate> delegate;
 
+//@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
+//
+//- (IBAction)uploadCurrentVideo:(id)sender;
+
 - (IBAction)changedExtentionStatus:(id)sender;
 
 /*!
  *  cell是否处于编辑状态
  */
 @property(nonatomic,assign) BOOL isEditingCell;
+
+@property (weak, nonatomic) IBOutlet UIButton *changeCellStatusSignBtn;
 
 @end

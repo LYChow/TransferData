@@ -12,6 +12,7 @@
 #import "LYDownloadExtentionCell.h"
 #import "LYDownloadModel.h"
 #import "LYBottomView.h"
+#import "LYDownloadTool.h"
 
 static NSString *cellIndentifier =@"cellIndentifier";
 static NSString *cellExtentionIndentifier =@"cellExtentionIndentifier";
@@ -53,7 +54,7 @@ static NSString *cellExtentionIndentifier =@"cellExtentionIndentifier";
 {
     [super initialization];
     
-    NSURL *url =[NSURL URLWithString:@"http://localhost:8080/MJServer/video"];
+    NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kBaseUrl,@"video"]];
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     
@@ -216,7 +217,7 @@ static NSString *cellExtentionIndentifier =@"cellExtentionIndentifier";
 
 }
 
-#pragma mark LYBottomDelegate
+#pragma mark LYBottomDelegate  触发事件相应
 -(void)bottomView:(LYBottomView *)bottomView tapItemIndex:(NSInteger)index
 {
     NSMutableArray *selectedList =[NSMutableArray array];
@@ -230,8 +231,15 @@ static NSString *cellExtentionIndentifier =@"cellExtentionIndentifier";
                     [selectedList addObject:model];
                 }
             }
+            //下载选中的数据
+            [[LYDownloadTool shareManager] startDownloadFileWithModelList:selectedList];
             
-            NSLog(@"选中的list---%@",selectedList);
+            //取消编辑状态
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"editStatusChange" object:nil];
+            
+            //把下载任务添加到下载列表中
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"addDownloadTask" object:selectedList];
+            
         }
             break;
         case 1:

@@ -8,7 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class LYDownloadModel;
+
+typedef void(^downloadCompleteBlock)(LYDownloadModel *model);
+
 @interface LYDownloadModel : NSObject
+
 
 /*!
  *  视频的id
@@ -43,9 +48,16 @@
 @property(nonatomic, assign) BOOL isExtentionStatus;
 
 /*!
- *  是否是下载状态
+ *  开始、暂停
  */
 @property(nonatomic, assign) BOOL isStart;
+
+/*!
+ *  下载完成、下载未完成
+ */
+@property(nonatomic, assign) BOOL isCompleted;
+
+@property(nonatomic, weak) downloadCompleteBlock completeBlock;
 
 +(instancetype)initModelWithDictionary:(NSDictionary *)dict;
 @end

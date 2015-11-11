@@ -7,13 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LYDownloadModel.h"
+
+@protocol LYDownloadToolDelegate <NSObject>
+
+//下载界面回调当前正在下载的model和下载进度
+-(void)currentDownloadingModel:(LYDownloadModel *)model downloadProgress:(float)progress;
+
+@end
 
 @interface LYDownloadTool : NSObject
 
+
++(instancetype)shareManager;
 /*!
  *  下载
  */
--(void)downloadFileWithModelList:(NSArray *)modelList;
+-(void)startDownloadFileWithModelList:(NSArray *)modelList;
 
 /*!
  * 恢复下载
@@ -30,5 +40,6 @@
  */
 -(void)cancelDownloadFileList:(NSArray *)modelList;
 
+@property (nonatomic,weak) id<LYDownloadToolDelegate> delegate;
 
 @end

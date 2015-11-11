@@ -15,6 +15,7 @@
 
 #import "AppTableViewController.h"
 #import "LYDownLoadRootVC.h"
+#import "LYUploadVC.h"
 @interface AppTableViewController ()
 @property(nonatomic,strong) NSArray  *functionLists;
 @end
@@ -28,16 +29,18 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self initializationData];
     [self createTableView];
+    
+
 }
 
 -(void)initializationData
 {
-    self.functionLists =[NSArray arrayWithObjects:@"下载列表",@"已下载列表",@"本地上传",@"WIFI传输",nil];
+    self.functionLists =[NSArray arrayWithObjects:@"下载列表",@"本地上传",@"WIFI传输",nil];
 }
 
 -(void)createTableView
 {
-
+  
 }
 
 
@@ -77,17 +80,18 @@
         {
             LYDownLoadRootVC *rootVC =[[LYDownLoadRootVC alloc] init];
             [self.navigationController pushViewController:rootVC animated:YES];
+            break;
         }
-            break;
         case 1:
-            
+        {
+            LYUploadVC *uploadVC = [[LYUploadVC alloc] init];
+            [self.navigationController pushViewController:uploadVC animated:YES];
             break;
+        }
         case 2:
             
             break;
-        case 3:
-            
-            break;
+
         default:
             break;
     }

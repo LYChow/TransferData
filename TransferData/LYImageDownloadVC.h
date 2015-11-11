@@ -8,6 +8,7 @@
 
 #import "LYViewController.h"
 
+
 @interface LYImageDownloadVC : LYViewController
 
 
@@ -22,4 +23,5 @@
  *  设置全选、全不选状态
  */
 @property(nonatomic,assign) BOOL selectedAll;
+
 @end

@@ -8,8 +8,7 @@
 
 #import "LYDownloadExtentionCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
-#define kBaseUrl  @"http://localhost:8080/MJServer/"
+#import "LYConst.h"
 
 @interface LYDownloadExtentionCell()
 @property (weak, nonatomic) IBOutlet UIImageView *videoCoverImageView;

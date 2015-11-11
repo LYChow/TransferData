@@ -34,6 +34,8 @@
  *  当前滑动到的VC
  */
 @property(nonatomic,strong) UIViewController  *currentVC;
+
+@property(nonatomic,strong) UIButton *editOrDoneButton;
 @end
 
 @implementation LYDownLoadRootVC
@@ -46,16 +48,19 @@
     self.view.backgroundColor=[UIColor whiteColor];
     self.title=@"网络列表";
     [self createSliderView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editStatusChange:) name:@"editStatusChange" object:nil];
+
 }
 
 -(void)setupNavigationBarItem
 {
-    UIButton *editOrDoneButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    editOrDoneButton.frame=CGRectMake(0, 0, 60, 30);
-    [editOrDoneButton setTitleColor:kColor(0,122,255,1) forState:UIControlStateNormal];
-    [editOrDoneButton setTitle:@"多选" forState:UIControlStateNormal];
-    [editOrDoneButton addTarget:self action:@selector(editStatusChange:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightItem =[[UIBarButtonItem alloc] initWithCustomView:editOrDoneButton];
+    _editOrDoneButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    _editOrDoneButton.frame=CGRectMake(0, 0, 60, 30);
+    [_editOrDoneButton setTitleColor:kColor(0,122,255,1) forState:UIControlStateNormal];
+    [_editOrDoneButton setTitle:@"多选" forState:UIControlStateNormal];
+    [_editOrDoneButton addTarget:self action:@selector(editStatusChange:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem =[[UIBarButtonItem alloc] initWithCustomView:_editOrDoneButton];
     self.navigationItem.rightBarButtonItem=rightItem;
     
     UIButton *selectedButton =[UIButton buttonWithType:UIButtonTypeCustom];
@@ -77,14 +82,14 @@
     
     if (isEditStatus)
     {
-        [btn setTitle:@"取消" forState:UIControlStateNormal];
+        [_editOrDoneButton setTitle:@"取消" forState:UIControlStateNormal];
         self.title=@"选择文件";
         
         self.navigationItem.leftBarButtonItem=_leftItem;
     }
     else
     {
-        [btn setTitle:@"多选" forState:UIControlStateNormal];
+        [_editOrDoneButton setTitle:@"多选" forState:UIControlStateNormal];
         self.title=@"网络列表";
         
         self.navigationItem.leftBarButtonItem=nil;
@@ -157,7 +162,7 @@
 -(NSArray *)topTitleArray
 {
     if (!_topTitleArray) {
-        self.topTitleArray =[NSArray arrayWithObjects:@"视频",@"图片",nil];
+        self.topTitleArray =[NSArray arrayWithObjects:@"网络视频",@"已下载",nil];
     }
     return _topTitleArray;
 }
@@ -165,7 +170,7 @@
 -(NSArray *)topImageArray
 {
     if (!_topImageArray) {
-        self.topImageArray =[NSArray arrayWithObjects:@"icon_video",@"icon_image",nil];
+        self.topImageArray =[NSArray arrayWithObjects:@"icon_video",@"icon_video",nil];
     }
     return _topImageArray;
 }
@@ -228,5 +233,7 @@
 {
    self.currentVC =[self.viewControllers objectAtIndex:index];
 }
+
+
 
 @end
