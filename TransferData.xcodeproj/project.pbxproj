@@ -17,6 +17,9 @@
 		4F8134DE1BF228150003E9B3 /* AppTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134DD1BF228150003E9B3 /* AppTableViewController.m */; };
 		4F8134E11BF229880003E9B3 /* LYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134E01BF229880003E9B3 /* LYNavigationController.m */; };
 		4F8135291BF22F880003E9B3 /* DownloadListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8135281BF22F880003E9B3 /* DownloadListVC.m */; };
+		4FFB841E1BF3443F00D3A557 /* LYSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB841D1BF3443F00D3A557 /* LYSliderView.m */; };
+		4FFB84271BF383FA00D3A557 /* UIView+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB84261BF383FA00D3A557 /* UIView+Extention.m */; };
+		4FFB842A1BF3841500D3A557 /* UIBarButtonItem+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB84291BF3841500D3A557 /* UIBarButtonItem+Extention.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,13 @@
 		4F8134E01BF229880003E9B3 /* LYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYNavigationController.m; sourceTree = "<group>"; };
 		4F8135271BF22F880003E9B3 /* DownloadListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListVC.h; sourceTree = "<group>"; };
 		4F8135281BF22F880003E9B3 /* DownloadListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListVC.m; sourceTree = "<group>"; };
+		4FFB841C1BF3443F00D3A557 /* LYSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSliderView.h; sourceTree = "<group>"; };
+		4FFB841D1BF3443F00D3A557 /* LYSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSliderView.m; sourceTree = "<group>"; };
+		4FFB84211BF36FBF00D3A557 /* LYConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYConst.h; sourceTree = "<group>"; };
+		4FFB84251BF383FA00D3A557 /* UIView+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extention.h"; sourceTree = "<group>"; };
+		4FFB84261BF383FA00D3A557 /* UIView+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extention.m"; sourceTree = "<group>"; };
+		4FFB84281BF3841500D3A557 /* UIBarButtonItem+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extention.h"; sourceTree = "<group>"; };
+		4FFB84291BF3841500D3A557 /* UIBarButtonItem+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extention.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +125,8 @@
 				4F8134E01BF229880003E9B3 /* LYNavigationController.m */,
 				4F8135271BF22F880003E9B3 /* DownloadListVC.h */,
 				4F8135281BF22F880003E9B3 /* DownloadListVC.m */,
+				4FFB84241BF3821F00D3A557 /* Category */,
+				4FFB841B1BF3437800D3A557 /* Unitils */,
 				4F8134A11BF2260E0003E9B3 /* Supporting Files */,
 			);
 			path = TransferData;
@@ -148,6 +160,35 @@
 				4F8134C81BF2260E0003E9B3 /* Info.plist */,
 			);
 			path = TransferDataUITests;
+			sourceTree = "<group>";
+		};
+		4FFB841B1BF3437800D3A557 /* Unitils */ = {
+			isa = PBXGroup;
+			children = (
+				4FFB84201BF36F8E00D3A557 /* Const */,
+				4FFB841C1BF3443F00D3A557 /* LYSliderView.h */,
+				4FFB841D1BF3443F00D3A557 /* LYSliderView.m */,
+			);
+			name = Unitils;
+			sourceTree = "<group>";
+		};
+		4FFB84201BF36F8E00D3A557 /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				4FFB84211BF36FBF00D3A557 /* LYConst.h */,
+			);
+			name = Const;
+			sourceTree = "<group>";
+		};
+		4FFB84241BF3821F00D3A557 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				4FFB84251BF383FA00D3A557 /* UIView+Extention.h */,
+				4FFB84261BF383FA00D3A557 /* UIView+Extention.m */,
+				4FFB84281BF3841500D3A557 /* UIBarButtonItem+Extention.h */,
+				4FFB84291BF3841500D3A557 /* UIBarButtonItem+Extention.m */,
+			);
+			name = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +326,10 @@
 			files = (
 				4F8134E11BF229880003E9B3 /* LYNavigationController.m in Sources */,
 				4F8134DA1BF2276B0003E9B3 /* AppDelegate.m in Sources */,
+				4FFB84271BF383FA00D3A557 /* UIView+Extention.m in Sources */,
+				4FFB841E1BF3443F00D3A557 /* LYSliderView.m in Sources */,
 				4F8135291BF22F880003E9B3 /* DownloadListVC.m in Sources */,
+				4FFB842A1BF3841500D3A557 /* UIBarButtonItem+Extention.m in Sources */,
 				4F8134A31BF2260E0003E9B3 /* main.m in Sources */,
 				4F8134DE1BF228150003E9B3 /* AppTableViewController.m in Sources */,
 			);
@@ -513,6 +557,7 @@
 				4F8134CD1BF2260E0003E9B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F8134CE1BF2260E0003E9B3 /* Build configuration list for PBXNativeTarget "TransferDataTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +566,7 @@
 				4F8134D01BF2260E0003E9B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F8134D11BF2260E0003E9B3 /* Build configuration list for PBXNativeTarget "TransferDataUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +575,7 @@
 				4F8134D31BF2260E0003E9B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
