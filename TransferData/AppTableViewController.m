@@ -14,7 +14,7 @@
 #define MCImageCachePath(url)  [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[url lastPathComponent]]
 
 #import "AppTableViewController.h"
-#import "DownloadListVC.h"
+#import "LYDownLoadRootVC.h"
 @interface AppTableViewController ()
 @property(nonatomic,strong) NSArray  *functionLists;
 @end
@@ -71,11 +71,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     switch (indexPath.row) {
         case 0:
         {
-            DownloadListVC *downloadListVC =[[DownloadListVC alloc] init];
-            [self.navigationController pushViewController:downloadListVC animated:YES];
+            LYDownLoadRootVC *rootVC =[[LYDownLoadRootVC alloc] init];
+            [self.navigationController pushViewController:rootVC animated:YES];
         }
             break;
         case 1:

@@ -47,7 +47,7 @@ typedef enum : NSUInteger
 @end
 
 
-@interface LYSliderView : UIView<UITableViewDelegate,UITableViewDataSource>
+@interface LYSliderView : UIView
 
 /**
  *  顶部scrollView上item的标题
@@ -78,9 +78,26 @@ typedef enum : NSUInteger
 @property (nonatomic ,weak) id <LYSliderViewDelegate> delegate;
 
 /**
- *  顶部item的类型
+ *  顶部item分布的类型(宽度设置)
  */
 @property (nonatomic ,assign) topScrollViewType topScrollType;
+
+/**
+ *  顶部item的内容设置
+ */
+@property (nonatomic ,assign) itemType topScrollItemType;
+
+/*!
+ *  设置TopScrollView、MainScrollView内容
+ */
+-(void)setUpScrollViewContent;
+
+/**
+ *  刷新item标题的内容
+ */
+-(void)updateSliderItemTitleAtIndex:(NSInteger)index replaceWithTitle:(NSString *)replaceTitle;
+
+
 @end
 
 
@@ -102,12 +119,12 @@ typedef enum : NSUInteger
 /**
  *  用于item标题显示
  */
-@property(nonatomic,strong) NSString  *itemTitle;
+@property(nonatomic,strong) UILabel  *titleLabel;
 
 /**
  *  用于item图片标示
  */
-@property(nonatomic,strong) NSString  *itemSignImageName;
+@property(nonatomic,strong) UIButton  *signButton;
 
 @property(nonatomic, weak) id  <LYSliderViewItemDelegate>  delegate;
 
@@ -116,8 +133,4 @@ typedef enum : NSUInteger
  */
 @property(nonatomic, assign) itemType  topItemType;
 
-/**
- *  item当前是否处于选中状态
- */
-@property(nonatomic, assign) BOOL isSelected;
 @end

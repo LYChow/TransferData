@@ -11,8 +11,11 @@
 #import "UIView+Extention.h"
 
 #define kTopItemWidth   100
+#define labelFontSize   15
+#define animationViewHeight  3
+#define animationTime    0.3
 
-@interface LYSliderView ()<UIScrollViewDelegate>
+@interface LYSliderView ()<UIScrollViewDelegate,LYSliderViewItemDelegate>
 
 /**
  *  顶部切换Item的scrollView
@@ -29,20 +32,48 @@
  */
 @property(nonatomic,strong) UIView  *  animationView;
 
-
+/*!
+ *  把items存放在数组中
+ */
+@property(nonatomic,strong) NSMutableArray  *itemsArray;
 @end
 
 @implementation LYSliderView
 
--(id)init
+-(NSMutableArray *)itemsArray
 {
-    if (self=[super init])
+    if (!_itemsArray)
+    {
+        self.itemsArray =[NSMutableArray array];
+    }
+    return _itemsArray;
+}
+
+-(id)initWithFrame:(CGRect)frame
+{
+    if (self=[super initWithFrame:frame])
     {
         [self initialization];
         [self createScrollView];
+
     }
     return self;
 }
+
+//- (instancetype)init
+//{
+//    self = [super init];
+//    if (self) {
+//
+//    }
+//    return self;
+//}
+
+//-(void)setFrame:(CGRect)frame
+//{
+//    [super setFrame:frame];
+//
+//}
 
 #pragma -mark view的初始化、数据源设置
 /**
@@ -52,7 +83,8 @@
 {
     _topScrollViewHeight =44;
     _topScrollType =ItemByScreenWidthTopScrollViewType;
-    
+    _topScrollItemType=TextAndImageItemType;
+    _selectedIndex =0;
     
 }
 
@@ -64,36 +96,46 @@
     _topScrollView =[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,kScreenWeight ,_topScrollViewHeight)];
     _topScrollView.delegate = self;
     _topScrollView.scrollEnabled = YES;
-    _topScrollView.backgroundColor = [UIColor whiteColor];
     _topScrollView.pagingEnabled = NO;
     _topScrollView.showsHorizontalScrollIndicator = NO;
     _topScrollView.showsVerticalScrollIndicator = NO;
-    [self addSubview:_topScrollView];
+    
 
+    
     
     _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,_topScrollViewHeight,kScreenWeight,kScreenHeight-64-_topScrollViewHeight)];
     _mainScrollView.delegate = self;
     _mainScrollView.scrollEnabled = YES;
-    _mainScrollView.backgroundColor = [UIColor clearColor];
     _mainScrollView.pagingEnabled = YES;
     _mainScrollView.userInteractionEnabled = YES;
     _mainScrollView.showsHorizontalScrollIndicator = NO;
     _mainScrollView.showsVerticalScrollIndicator = NO;
-    [self addSubview:_mainScrollView];
+
+   
+    
+    _animationView =[[UIView alloc] init];
+    _animationView.hidden=NO;
+    _animationView.backgroundColor=kColor(0,122,255,1);
+    
 
 }
 
 /**
  *  _topScrollView和 _mainScrollView进行填充内容
  */
--(void)setUpScrollView
+
+
+-(void)setUpScrollViewContent
 {
-    // ItemByScreenWidthTopScrollViewType时item宽
-    CGFloat itemWidth =kScreenWeight/_topTitlesArray.count;
+    [self createScrollView];
     
+    // ItemByScreenWidthTopSrollViewType时item宽
+    CGFloat itemWidth =kScreenWeight/_topTitlesArray.count;
+
     //加载topScrollView
     for (int i=0; i<_topTitlesArray.count; i++)
     {
+        //item宽度的大小 根据屏幕均分宽度 、等宽、根据内容自扩展宽度
         switch (_topScrollType) {
             case ItemWidthByContentTopScrollViewType:
             {
@@ -107,14 +149,51 @@
                 break;
             case ItemByScreenWidthTopScrollViewType:
             {
-                LYSliderViewItem *item =[[LYSliderViewItem alloc] init];
+                
+                
+                 LYSliderViewItem *item =[[LYSliderViewItem alloc] init];
                 item.frame=CGRectMake(i*itemWidth, 0, itemWidth, _topScrollViewHeight);
-                item.itemTitle =[_topTitlesArray objectAtIndex:i];
-                item.itemSignImageName=[_topImagesArray objectAtIndex:i];
-                
-                item.topItemType = TextItemType;
                 
                 
+                //item上面的内容类型 (文本、图片、文本和图片)
+
+                if (_topScrollItemType == TextItemType)
+                {
+                    item.signButton.hidden=YES;
+                    
+                    item.titleLabel.text =[_topTitlesArray objectAtIndex:i];
+                    item.titleLabel.frame=CGRectMake(0, 0, item.width, item.height);
+                }
+                else if (_topScrollItemType == TextAndImageItemType)
+                {
+                    UIImage *image =[UIImage imageNamed:[_topImagesArray objectAtIndex:i]];
+                    CGSize imageSize =image.size;
+                    
+                    
+                    CGSize labelSize = [[_topTitlesArray objectAtIndex:i] sizeWithAttributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:labelFontSize] forKey:NSFontAttributeName]];
+                    
+                    
+                    
+                    item.frame=CGRectMake(i*itemWidth, 0, itemWidth,
+                                          _topScrollViewHeight);
+                    item.titleLabel.text =[_topTitlesArray objectAtIndex:i];
+                    item.titleLabel.frame=CGRectMake((itemWidth-labelSize.width-imageSize.width-10)/2, (_topScrollViewHeight-labelSize.height)/2, labelSize.width, labelSize.height);
+                    
+                    
+                    [item.signButton setImage:[UIImage imageNamed:[_topImagesArray objectAtIndex:i]] forState:UIControlStateNormal];
+                    [item.signButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",[_topImagesArray objectAtIndex:i]]] forState:UIControlStateSelected];
+                    item.signButton.frame=CGRectMake(CGRectGetMaxX(item.titleLabel.frame)+10,(_topScrollViewHeight-image.size.height)/2, imageSize.width, imageSize.height);
+                }
+                else if (_topScrollItemType == ImageItemType)
+                {
+                    item.titleLabel.hidden=YES;
+                    
+                    [item.signButton setImage:[UIImage imageNamed:[_topImagesArray objectAtIndex:i]] forState:UIControlStateNormal];
+                    [item.signButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",[_topImagesArray objectAtIndex:i]]] forState:UIControlStateSelected];
+                    item.signButton.frame=CGRectMake(0, 0, item.width, item.height);
+                }
+                
+                [self.itemsArray addObject:item];
                 [_topScrollView addSubview:item];
             }
                 break;
@@ -124,8 +203,22 @@
     }
 
     
+    
     //加载mainScrollView
+    _mainScrollView.contentSize=CGSizeMake(kScreenWeight*[_delegate numberOfViewControllersInSliderView:self], kScreenHeight-64-_topScrollViewHeight);
 
+    
+    for (int i=0; i<[_delegate numberOfViewControllersInSliderView:self]; i++)
+    {
+        UIViewController *viewController =[_delegate sliderView:self viewForViewControllerAtIndex:i];
+        viewController.view.frame=CGRectMake(i*kScreenWeight, _topScrollViewHeight, kScreenWeight, kScreenHeight-64-_topScrollViewHeight);
+        [_mainScrollView addSubview:viewController.view];
+    }
+
+    _animationView.frame=CGRectMake(0, _topScrollViewHeight-animationViewHeight, kScreenWeight/_topTitlesArray.count, animationViewHeight);
+    [self addSubview:_animationView];
+    [self addSubview:_topScrollView];
+    [self addSubview:_mainScrollView];
 }
 
 #pragma -mark 属性值设置
@@ -156,6 +249,44 @@
     }
 }
 #pragma -mark 自定义方法
+-(void)updateSliderItemTitleAtIndex:(NSInteger)index replaceWithTitle:(NSString *)replaceTitle
+{
+    LYSliderViewItem *item =  [self.itemsArray objectAtIndex:index];
+    item.titleLabel.text=replaceTitle;
+}
+
+
+
+#pragma -mark 点击item时Delegate调用
+-(void)sliderViewItem:(LYSliderViewItem *)item didTapItemAtIndex:(NSInteger)index
+{
+
+}
+
+-(void)scrollviewItemDidScrollItemsIndex:(NSInteger)index
+{
+
+    for (int i=0; i<self.itemsArray.count; i++)
+    {
+        
+        if (i==index)
+        {
+            
+        }
+        else
+        {
+        
+        }
+    }
+
+    //当前滑到的Item状态改变
+    
+    //上一个Item状态取消
+    
+    //animationView动画效果
+    
+    //
+}
 
 
 #pragma -mark UIScrollViewDelegate
@@ -163,11 +294,9 @@
 @end
 
 
-#define labelFontSize   15
+
 
 @interface LYSliderViewItem ()
-@property(nonatomic,strong) UILabel  *titleLabel;
-@property(nonatomic,strong) UIButton *signButton;
 @end
 @implementation LYSliderViewItem
 
@@ -177,6 +306,9 @@
     {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor =[UIColor grayColor];
+        _titleLabel.font =[UIFont systemFontOfSize:labelFontSize];
+        _titleLabel.textAlignment=NSTextAlignmentCenter;
+        
         
         _signButton = [[UIButton alloc] init];
         
@@ -206,50 +338,6 @@
     
 }
 
-/**
- *  设置item显示的类型 (文本、图片、文本和图片)
- */
--(void)setTopItemType:(itemType)topItemType
-{
-    switch (topItemType) {
-        case TextItemType:
-            _titleLabel.hidden=NO;
-            _signButton.hidden=YES;
-            _titleLabel.frame=self.frame;
 
-            break;
-        case TextAndImageItemType:
-            _titleLabel.hidden=NO;
-            _signButton.hidden=NO;
-            break;
-        case ImageItemType:
-            _titleLabel.hidden=YES;
-            _signButton.hidden=NO;
-            break;
-        default:
-            break;
-    }
-}
-
-
--(void)setItemSignImageName:(NSString *)itemSignImageName
-{
-    [self.signButton setImage:[UIImage imageNamed:itemSignImageName] forState:UIControlStateNormal];
-    [self.signButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",itemSignImageName]] forState:UIControlStateSelected];
-
-    
-}
-
--(void)setItemTitle:(NSString *)itemTitle
-{
-    _titleLabel.text =itemTitle;
-    CGSize size = [itemTitle sizeWithAttributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:labelFontSize] forKey:NSFontAttributeName]];
-    
-    _titleLabel.frame=CGRectMake((self.width-size.width)/2, 10, size.width, 21);
-    
-    UIImage *image =[UIImage imageNamed:_itemSignImageName];
-    _signButton.frame=CGRectMake(CGRectGetMaxX(_titleLabel.frame)+10, 10, image.size.width, image.size.width);
-    
-}
 
 @end

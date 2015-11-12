@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		4FFB843B1BF4692800D3A557 /* Document */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4FFB843C1BF4692800D3A557 /* Build configuration list for PBXAggregateTarget "Document" */;
+			buildPhases = (
+				4FFB843F1BF4695600D3A557 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Document;
+			productName = Document;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		4F8134A31BF2260E0003E9B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134A21BF2260E0003E9B3 /* main.m */; };
 		4F8134AC1BF2260E0003E9B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F8134AA1BF2260E0003E9B3 /* Main.storyboard */; };
@@ -16,10 +30,14 @@
 		4F8134DA1BF2276B0003E9B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134D71BF2276B0003E9B3 /* AppDelegate.m */; };
 		4F8134DE1BF228150003E9B3 /* AppTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134DD1BF228150003E9B3 /* AppTableViewController.m */; };
 		4F8134E11BF229880003E9B3 /* LYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8134E01BF229880003E9B3 /* LYNavigationController.m */; };
-		4F8135291BF22F880003E9B3 /* DownloadListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8135281BF22F880003E9B3 /* DownloadListVC.m */; };
 		4FFB841E1BF3443F00D3A557 /* LYSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB841D1BF3443F00D3A557 /* LYSliderView.m */; };
 		4FFB84271BF383FA00D3A557 /* UIView+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB84261BF383FA00D3A557 /* UIView+Extention.m */; };
 		4FFB842A1BF3841500D3A557 /* UIBarButtonItem+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB84291BF3841500D3A557 /* UIBarButtonItem+Extention.m */; };
+		4FFB842D1BF4559800D3A557 /* LYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB842C1BF4559800D3A557 /* LYViewController.m */; };
+		4FFB84301BF45A4300D3A557 /* LYDownLoadRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB842F1BF45A4300D3A557 /* LYDownLoadRootVC.m */; };
+		4FFB84371BF45BF100D3A557 /* LYVideoDownloadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB84361BF45BF100D3A557 /* LYVideoDownloadVC.m */; };
+		4FFB843A1BF45C1500D3A557 /* LYImageDownloadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB84391BF45C1500D3A557 /* LYImageDownloadVC.m */; };
+		4FFB84441BF46E8500D3A557 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFB84431BF46E8500D3A557 /* libWeChatSDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +76,6 @@
 		4F8134DD1BF228150003E9B3 /* AppTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTableViewController.m; sourceTree = "<group>"; };
 		4F8134DF1BF229880003E9B3 /* LYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYNavigationController.h; sourceTree = "<group>"; };
 		4F8134E01BF229880003E9B3 /* LYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYNavigationController.m; sourceTree = "<group>"; };
-		4F8135271BF22F880003E9B3 /* DownloadListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListVC.h; sourceTree = "<group>"; };
-		4F8135281BF22F880003E9B3 /* DownloadListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListVC.m; sourceTree = "<group>"; };
 		4FFB841C1BF3443F00D3A557 /* LYSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSliderView.h; sourceTree = "<group>"; };
 		4FFB841D1BF3443F00D3A557 /* LYSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSliderView.m; sourceTree = "<group>"; };
 		4FFB84211BF36FBF00D3A557 /* LYConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYConst.h; sourceTree = "<group>"; };
@@ -67,6 +83,17 @@
 		4FFB84261BF383FA00D3A557 /* UIView+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extention.m"; sourceTree = "<group>"; };
 		4FFB84281BF3841500D3A557 /* UIBarButtonItem+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extention.h"; sourceTree = "<group>"; };
 		4FFB84291BF3841500D3A557 /* UIBarButtonItem+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extention.m"; sourceTree = "<group>"; };
+		4FFB842B1BF4559800D3A557 /* LYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYViewController.h; sourceTree = "<group>"; };
+		4FFB842C1BF4559800D3A557 /* LYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYViewController.m; sourceTree = "<group>"; };
+		4FFB842E1BF45A4300D3A557 /* LYDownLoadRootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDownLoadRootVC.h; sourceTree = "<group>"; };
+		4FFB842F1BF45A4300D3A557 /* LYDownLoadRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDownLoadRootVC.m; sourceTree = "<group>"; };
+		4FFB84351BF45BF100D3A557 /* LYVideoDownloadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYVideoDownloadVC.h; sourceTree = "<group>"; };
+		4FFB84361BF45BF100D3A557 /* LYVideoDownloadVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYVideoDownloadVC.m; sourceTree = "<group>"; };
+		4FFB84381BF45C1500D3A557 /* LYImageDownloadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYImageDownloadVC.h; sourceTree = "<group>"; };
+		4FFB84391BF45C1500D3A557 /* LYImageDownloadVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYImageDownloadVC.m; sourceTree = "<group>"; };
+		4FFB84411BF46E8500D3A557 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		4FFB84421BF46E8500D3A557 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		4FFB84431BF46E8500D3A557 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FFB84441BF46E8500D3A557 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,9 +151,12 @@
 				4F8134DD1BF228150003E9B3 /* AppTableViewController.m */,
 				4F8134DF1BF229880003E9B3 /* LYNavigationController.h */,
 				4F8134E01BF229880003E9B3 /* LYNavigationController.m */,
-				4F8135271BF22F880003E9B3 /* DownloadListVC.h */,
-				4F8135281BF22F880003E9B3 /* DownloadListVC.m */,
-				4FFB84241BF3821F00D3A557 /* Category */,
+				4FFB842B1BF4559800D3A557 /* LYViewController.h */,
+				4FFB842C1BF4559800D3A557 /* LYViewController.m */,
+				4FFB84341BF45AF300D3A557 /* Upload */,
+				4FFB84331BF45A9500D3A557 /* DownLoad */,
+				4FFB84321BF45A6400D3A557 /* WiFItransfer */,
+				4FFB84311BF45A4F00D3A557 /* NetWorkDownload */,
 				4FFB841B1BF3437800D3A557 /* Unitils */,
 				4F8134A11BF2260E0003E9B3 /* Supporting Files */,
 			);
@@ -165,6 +196,8 @@
 		4FFB841B1BF3437800D3A557 /* Unitils */ = {
 			isa = PBXGroup;
 			children = (
+				4FFB84241BF3821F00D3A557 /* Category */,
+				4FFB84401BF46DC700D3A557 /* Lib */,
 				4FFB84201BF36F8E00D3A557 /* Const */,
 				4FFB841C1BF3443F00D3A557 /* LYSliderView.h */,
 				4FFB841D1BF3443F00D3A557 /* LYSliderView.m */,
@@ -189,6 +222,50 @@
 				4FFB84291BF3841500D3A557 /* UIBarButtonItem+Extention.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		4FFB84311BF45A4F00D3A557 /* NetWorkDownload */ = {
+			isa = PBXGroup;
+			children = (
+				4FFB842E1BF45A4300D3A557 /* LYDownLoadRootVC.h */,
+				4FFB842F1BF45A4300D3A557 /* LYDownLoadRootVC.m */,
+				4FFB84351BF45BF100D3A557 /* LYVideoDownloadVC.h */,
+				4FFB84361BF45BF100D3A557 /* LYVideoDownloadVC.m */,
+				4FFB84381BF45C1500D3A557 /* LYImageDownloadVC.h */,
+				4FFB84391BF45C1500D3A557 /* LYImageDownloadVC.m */,
+			);
+			name = NetWorkDownload;
+			sourceTree = "<group>";
+		};
+		4FFB84321BF45A6400D3A557 /* WiFItransfer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = WiFItransfer;
+			sourceTree = "<group>";
+		};
+		4FFB84331BF45A9500D3A557 /* DownLoad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DownLoad;
+			sourceTree = "<group>";
+		};
+		4FFB84341BF45AF300D3A557 /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Upload;
+			sourceTree = "<group>";
+		};
+		4FFB84401BF46DC700D3A557 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				4FFB84411BF46E8500D3A557 /* WXApi.h */,
+				4FFB84421BF46E8500D3A557 /* WXApiObject.h */,
+				4FFB84431BF46E8500D3A557 /* libWeChatSDK.a */,
+			);
+			name = Lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +330,7 @@
 		4F8134961BF2260E0003E9B3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = LY;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = IOSDeveloper;
 				TargetAttributes = {
@@ -269,6 +347,10 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 9R26SLQA2L;
 						TestTargetID = 4F81349D1BF2260E0003E9B3;
+					};
+					4FFB843B1BF4692800D3A557 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 9R26SLQA2L;
 					};
 				};
 			};
@@ -288,6 +370,7 @@
 				4F81349D1BF2260E0003E9B3 /* TransferData */,
 				4F8134B61BF2260E0003E9B3 /* TransferDataTests */,
 				4F8134C11BF2260E0003E9B3 /* TransferDataUITests */,
+				4FFB843B1BF4692800D3A557 /* Document */,
 			);
 		};
 /* End PBXProject section */
@@ -319,6 +402,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4FFB843F1BF4695600D3A557 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here\n\nmkdir -p headerDoc\n\nfind ./TransferData -name \\*.h -print | xargs headerdoc2html -o headerDoc\n\ngatherheaderdoc headerDoc\n\nexit 0";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4F81349A1BF2260E0003E9B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -328,10 +427,13 @@
 				4F8134DA1BF2276B0003E9B3 /* AppDelegate.m in Sources */,
 				4FFB84271BF383FA00D3A557 /* UIView+Extention.m in Sources */,
 				4FFB841E1BF3443F00D3A557 /* LYSliderView.m in Sources */,
-				4F8135291BF22F880003E9B3 /* DownloadListVC.m in Sources */,
 				4FFB842A1BF3841500D3A557 /* UIBarButtonItem+Extention.m in Sources */,
+				4FFB84371BF45BF100D3A557 /* LYVideoDownloadVC.m in Sources */,
 				4F8134A31BF2260E0003E9B3 /* main.m in Sources */,
+				4FFB84301BF45A4300D3A557 /* LYDownLoadRootVC.m in Sources */,
+				4FFB843A1BF45C1500D3A557 /* LYImageDownloadVC.m in Sources */,
 				4F8134DE1BF228150003E9B3 /* AppTableViewController.m in Sources */,
+				4FFB842D1BF4559800D3A557 /* LYViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +576,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TransferData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TransferData",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = LYChow.TransferData;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -485,6 +591,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TransferData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TransferData",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = LYChow.TransferData;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -538,6 +648,20 @@
 			};
 			name = Release;
 		};
+		4FFB843D1BF4692800D3A557 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4FFB843E1BF4692800D3A557 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -576,6 +700,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4FFB843C1BF4692800D3A557 /* Build configuration list for PBXAggregateTarget "Document" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FFB843D1BF4692800D3A557 /* Debug */,
+				4FFB843E1BF4692800D3A557 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
