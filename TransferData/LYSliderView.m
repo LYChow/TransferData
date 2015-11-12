@@ -14,6 +14,13 @@
 #define labelFontSize   15
 #define animationViewHeight  3
 #define animationTime    0.3
+#define kBaseTag        1000
+
+
+typedef enum : NSUInteger {
+    ItemWidthAnimationViewType,
+    ItemContentWidthAnimationType
+} animationViewType;
 
 @interface LYSliderView ()<UIScrollViewDelegate,LYSliderViewItemDelegate>
 
@@ -36,6 +43,8 @@
  *  把items存放在数组中
  */
 @property(nonatomic,strong) NSMutableArray  *itemsArray;
+
+@property(nonatomic ,assign)animationViewType animationViewType;
 @end
 
 @implementation LYSliderView
@@ -60,20 +69,6 @@
     return self;
 }
 
-//- (instancetype)init
-//{
-//    self = [super init];
-//    if (self) {
-//
-//    }
-//    return self;
-//}
-
-//-(void)setFrame:(CGRect)frame
-//{
-//    [super setFrame:frame];
-//
-//}
 
 #pragma -mark view的初始化、数据源设置
 /**
@@ -84,8 +79,7 @@
     _topScrollViewHeight =44;
     _topScrollType =ItemByScreenWidthTopScrollViewType;
     _topScrollItemType=TextAndImageItemType;
-    _selectedIndex =0;
-    
+    _animationViewType = ItemContentWidthAnimationType;
 }
 
 /**
@@ -99,7 +93,6 @@
     _topScrollView.pagingEnabled = NO;
     _topScrollView.showsHorizontalScrollIndicator = NO;
     _topScrollView.showsVerticalScrollIndicator = NO;
-    
 
     
     
@@ -114,6 +107,7 @@
    
     
     _animationView =[[UIView alloc] init];
+    _animationView.frame=CGRectMake(0, _topScrollViewHeight-animationViewHeight,0, animationViewHeight);
     _animationView.hidden=NO;
     _animationView.backgroundColor=kColor(0,122,255,1);
     
@@ -152,6 +146,7 @@
                 
                 
                  LYSliderViewItem *item =[[LYSliderViewItem alloc] init];
+                item.delegate=self;
                 item.frame=CGRectMake(i*itemWidth, 0, itemWidth, _topScrollViewHeight);
                 
                 
@@ -173,7 +168,7 @@
                     CGSize labelSize = [[_topTitlesArray objectAtIndex:i] sizeWithAttributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:labelFontSize] forKey:NSFontAttributeName]];
                     
                     
-                    
+                    item.tag=kBaseTag+i;
                     item.frame=CGRectMake(i*itemWidth, 0, itemWidth,
                                           _topScrollViewHeight);
                     item.titleLabel.text =[_topTitlesArray objectAtIndex:i];
@@ -211,20 +206,22 @@
     for (int i=0; i<[_delegate numberOfViewControllersInSliderView:self]; i++)
     {
         UIViewController *viewController =[_delegate sliderView:self viewForViewControllerAtIndex:i];
-        viewController.view.frame=CGRectMake(i*kScreenWeight, _topScrollViewHeight, kScreenWeight, kScreenHeight-64-_topScrollViewHeight);
+        viewController.view.frame=CGRectMake(i*kScreenWeight, 0, kScreenWeight, kScreenHeight-64-_topScrollViewHeight);
         [_mainScrollView addSubview:viewController.view];
     }
 
-    _animationView.frame=CGRectMake(0, _topScrollViewHeight-animationViewHeight, kScreenWeight/_topTitlesArray.count, animationViewHeight);
+    
     [self addSubview:_animationView];
     [self addSubview:_topScrollView];
     [self addSubview:_mainScrollView];
+    
+    self.selectedIndex=0;
 }
 
 #pragma -mark 属性值设置
 -(void)setSelectedIndex:(NSInteger)selectedIndex
 {
-
+    [self scrollViewItemDidScrollItemsIndex:selectedIndex];
 }
 
 -(NSInteger)numberOfViewControllers
@@ -232,22 +229,6 @@
     return _topTitlesArray.count;
 }
 
--(void)setTopScrollType:(topScrollViewType)topScrollType
-{
-    switch (topScrollType) {
-        case ItemByScreenWidthTopScrollViewType:
-            
-            break;
-        case ItemEqualWidthTopScrollViewType:
-            
-            break;
-        case ItemWidthByContentTopScrollViewType:
-            
-            break;
-        default:
-            break;
-    }
-}
 #pragma -mark 自定义方法
 -(void)updateSliderItemTitleAtIndex:(NSInteger)index replaceWithTitle:(NSString *)replaceTitle
 {
@@ -260,36 +241,53 @@
 #pragma -mark 点击item时Delegate调用
 -(void)sliderViewItem:(LYSliderViewItem *)item didTapItemAtIndex:(NSInteger)index
 {
-
+    
+    [self scrollViewItemDidScrollItemsIndex:index];
 }
 
--(void)scrollviewItemDidScrollItemsIndex:(NSInteger)index
+-(void)scrollViewItemDidScrollItemsIndex:(NSInteger)index
 {
 
+    //当前滑到的Item状态改变
     for (int i=0; i<self.itemsArray.count; i++)
     {
-        
-        if (i==index)
-        {
-            
-        }
-        else
-        {
-        
-        }
+        LYSliderViewItem *item =[self.itemsArray objectAtIndex:i];
+        item.titleLabel.textColor =[UIColor grayColor];
+        item.signButton.selected = NO;
     }
+    LYSliderViewItem *currentItem =[self.itemsArray objectAtIndex:index];
+    currentItem.titleLabel.textColor =kColor(0,122,255,1);
+    currentItem.signButton.selected = YES ;
+    
+    
+    //animationView动画效果、mainScrollView滚动到某一个位置
+    [UIView animateWithDuration:animationTime animations:^{
+        
+        switch (_animationViewType) {
+            case ItemWidthAnimationViewType:
+                _animationView.frame=CGRectMake(currentItem.x, _topScrollViewHeight-animationViewHeight, currentItem.width, animationViewHeight);
+                break;
+            case ItemContentWidthAnimationType:
+                _animationView.frame=CGRectMake(currentItem.x+currentItem.titleLabel.x, _topScrollViewHeight-animationViewHeight, currentItem.titleLabel.width+currentItem.signButton.width+10, animationViewHeight);
+                break;
+            default:
+                break;
+        }
+    
+    _mainScrollView.contentOffset=CGPointMake(index *kScreenWeight, 0);
+    }];
 
-    //当前滑到的Item状态改变
-    
-    //上一个Item状态取消
-    
-    //animationView动画效果
-    
-    //
 }
 
 
 #pragma -mark UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSInteger index = scrollView.contentOffset.x/kScreenWeight
+    ;
+    [self scrollViewItemDidScrollItemsIndex:index];
+}
 
 @end
 
@@ -321,7 +319,8 @@
 -(void)setTag:(NSInteger)tag
 {
     [super setTag:tag];
-    UIGestureRecognizer *tap =[[UIGestureRecognizer alloc] initWithTarget:self action:@selector(tapItem:)];
+    
+    UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapItem:)];
     UIView *tapView =tap.view;
     tapView.tag=tag;
     [self addGestureRecognizer:tap];
@@ -333,7 +332,7 @@
 
     if ([_delegate respondsToSelector:@selector(sliderViewItem:didTapItemAtIndex:)])
     {
-        [_delegate sliderViewItem:self didTapItemAtIndex:tap.view.tag];
+        [_delegate sliderViewItem:self didTapItemAtIndex:tap.view.tag-kBaseTag];
     }
     
 }
