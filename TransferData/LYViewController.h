@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LYViewController : UIViewController
-
+@property(nonatomic,strong) UITableView  *tableView;
+-(void)initialization;
 @end

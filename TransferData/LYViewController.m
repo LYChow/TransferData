@@ -10,4 +10,8 @@
 
 @implementation LYViewController
 
+-(void)initialization
+{
+    
+}
 @end

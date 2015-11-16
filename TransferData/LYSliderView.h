@@ -23,6 +23,8 @@ typedef enum : NSUInteger
     ImageItemType          //图片
 } itemType;
 
+
+
 @class LYSliderView;
 
 @protocol LYSliderViewDelegate <NSObject>

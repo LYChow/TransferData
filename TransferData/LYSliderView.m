@@ -237,7 +237,6 @@ typedef enum : NSUInteger {
 }
 
 
-
 #pragma -mark 点击item时Delegate调用
 -(void)sliderViewItem:(LYSliderViewItem *)item didTapItemAtIndex:(NSInteger)index
 {
