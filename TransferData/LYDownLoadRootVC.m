@@ -13,22 +13,146 @@
 #import "LYImageDownloadVC.h"
 
 @interface LYDownLoadRootVC ()<LYSliderViewDelegate>
+/*!
+ *  sliderView标题
+ */
 @property(nonatomic,strong) NSArray  *topTitleArray;
+/*!
+ *  sliderView的图片
+ */
 @property(nonatomic,strong) NSArray  *topImageArray;
+/*!
+ *  装载控制器的数组
+ */
 @property(nonatomic,strong) NSMutableArray  *viewControllers;
+/*!
+ *  左侧的item
+ */
+@property(nonatomic,strong) UIBarButtonItem *leftItem;
+
+/*!
+ *  当前滑动到的VC
+ */
+@property(nonatomic,strong) UIViewController  *currentVC;
 @end
 
 @implementation LYDownLoadRootVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    [self setupNavigationBarItem];
+    
     self.view.backgroundColor=[UIColor whiteColor];
     self.title=@"网络列表";
     [self createSliderView];
 }
 
+-(void)setupNavigationBarItem
+{
+    UIButton *editOrDoneButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    editOrDoneButton.frame=CGRectMake(0, 0, 60, 30);
+    [editOrDoneButton setTitleColor:kColor(0,122,255,1) forState:UIControlStateNormal];
+    [editOrDoneButton setTitle:@"多选" forState:UIControlStateNormal];
+    [editOrDoneButton addTarget:self action:@selector(editStatusChange:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem =[[UIBarButtonItem alloc] initWithCustomView:editOrDoneButton];
+    self.navigationItem.rightBarButtonItem=rightItem;
+    
+    UIButton *selectedButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    selectedButton.frame=CGRectMake(0, 0, 60, 30);
+    [selectedButton setTitleColor:kColor(0,122,255,1) forState:UIControlStateNormal];
+    [selectedButton setTitle:@"全选" forState:UIControlStateNormal];
+    [selectedButton addTarget:self action:@selector(selectedAllStatusChange:) forControlEvents:UIControlEventTouchUpInside];
+    _leftItem =[[UIBarButtonItem alloc] initWithCustomView:selectedButton];
+    
+    
+}
 
+/*!
+ *  点击编辑状态
+ */
+-(void)editStatusChange:(UIButton *)btn
+{
+    static BOOL isEditStatus = YES;
+    
+    if (isEditStatus)
+    {
+        [btn setTitle:@"取消" forState:UIControlStateNormal];
+        self.title=@"选择文件";
+        
+        self.navigationItem.leftBarButtonItem=_leftItem;
+    }
+    else
+    {
+        [btn setTitle:@"多选" forState:UIControlStateNormal];
+        self.title=@"网络列表";
+        
+        self.navigationItem.leftBarButtonItem=nil;
+        
+        //非编辑状态时,取消所有选中的状态
+        if ([self.currentVC isKindOfClass:[LYVideoDownloadVC class]])
+        {
+            LYVideoDownloadVC *videoVC =(LYVideoDownloadVC *)self.currentVC;
+            videoVC.selectedAll=NO;
+        }
+        else if([self.currentVC isKindOfClass:[LYImageDownloadVC class]])
+        {
+            LYImageDownloadVC *imageVC =(LYImageDownloadVC *)self.currentVC;
+            imageVC.selectedAll=NO;
+        }
+        
+    }
+    
+    //编辑和非编辑状态cell的显示情况
+    if ([self.currentVC isKindOfClass:[LYVideoDownloadVC class]])
+    {
+        LYVideoDownloadVC *videoVC =(LYVideoDownloadVC *)self.currentVC;
+        videoVC.tableViewEditing=isEditStatus;
+    }
+    else if ([self.currentVC isKindOfClass:[LYImageDownloadVC class]])
+    {
+        LYImageDownloadVC *imageVC =(LYImageDownloadVC *)self.currentVC;
+        imageVC.tableViewEditing=isEditStatus;
+    }
+    
+    
+    isEditStatus=!isEditStatus;
+    
+
+    
+}
+/*!
+ *  点击全选/全不选 按钮
+ */
+-(void)selectedAllStatusChange:(UIButton *)btn
+{
+    static BOOL isSelectedAllStatus = YES;
+    
+    if (isSelectedAllStatus)
+    {
+        [btn setTitle:@"全选" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [btn setTitle:@"全不选" forState:UIControlStateNormal];
+    }
+    //编辑和非编辑状态cell的显示情况
+    if ([self.currentVC isKindOfClass:[LYVideoDownloadVC class]])
+    {
+        LYVideoDownloadVC *videoVC =(LYVideoDownloadVC *)self.currentVC;
+        videoVC.selectedAll=isSelectedAllStatus;
+    }
+    else if ([self.currentVC isKindOfClass:[LYImageDownloadVC class]])
+    {
+        LYImageDownloadVC *imageVC =(LYImageDownloadVC *)self.currentVC;
+        imageVC.selectedAll=isSelectedAllStatus;
+    }
+    
+    isSelectedAllStatus=!isSelectedAllStatus;
+    
+    //全选、全不选 状态的更改
+
+}
 
 -(NSArray *)topTitleArray
 {
@@ -85,6 +209,7 @@
 
 -(UIViewController *)sliderView:(LYSliderView *)sliderView viewForViewControllerAtIndex:(NSInteger)index
 {
+   
     return [self.viewControllers objectAtIndex:index];
 }
 
@@ -101,7 +226,7 @@
  */
 -(void)sliderView:(LYSliderView *)sliderView didScrollViewControllerAtIndex:(NSInteger)index
 {
-
+   self.currentVC =[self.viewControllers objectAtIndex:index];
 }
 
 @end

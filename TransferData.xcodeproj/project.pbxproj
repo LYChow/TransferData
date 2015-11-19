@@ -25,6 +25,9 @@
 		4F1AF8EC1BF58683000BA4B0 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1AF8EB1BF58683000BA4B0 /* NSString+Hash.m */; };
 		4F1AF8EE1BF586E1000BA4B0 /* MBProgressHUD in Resources */ = {isa = PBXBuildFile; fileRef = 4F1AF8ED1BF586E1000BA4B0 /* MBProgressHUD */; };
 		4F30DD161BFA0DF30049A7BD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F30DD151BFA0DF30049A7BD /* libsqlite3.tbd */; };
+		4F30DD1A1BFC75D50049A7BD /* LYBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F30DD191BFC75D50049A7BD /* LYBottomView.m */; };
+		4F30DD1E1BFDC00F0049A7BD /* LYDownloadTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F30DD1D1BFDC00F0049A7BD /* LYDownloadTool.m */; };
+		4F30DD211BFDC0220049A7BD /* LYUploadTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F30DD201BFDC0220049A7BD /* LYUploadTool.m */; };
 		4F32C6FB1BF99DE700E31118 /* LYDownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F32C6F91BF99DE700E31118 /* LYDownloadCell.m */; };
 		4F32C6FC1BF99DE700E31118 /* LYDownloadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F32C6FA1BF99DE700E31118 /* LYDownloadCell.xib */; };
 		4F32C7001BF99E0C00E31118 /* LYDownloadExtentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F32C6FE1BF99E0B00E31118 /* LYDownloadExtentionCell.m */; };
@@ -71,6 +74,12 @@
 		4F1AF8EB1BF58683000BA4B0 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		4F1AF8ED1BF586E1000BA4B0 /* MBProgressHUD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MBProgressHUD; sourceTree = "<group>"; };
 		4F30DD151BFA0DF30049A7BD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		4F30DD181BFC75D50049A7BD /* LYBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYBottomView.h; sourceTree = "<group>"; };
+		4F30DD191BFC75D50049A7BD /* LYBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYBottomView.m; sourceTree = "<group>"; };
+		4F30DD1C1BFDC00F0049A7BD /* LYDownloadTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDownloadTool.h; sourceTree = "<group>"; };
+		4F30DD1D1BFDC00F0049A7BD /* LYDownloadTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDownloadTool.m; sourceTree = "<group>"; };
+		4F30DD1F1BFDC0220049A7BD /* LYUploadTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYUploadTool.h; sourceTree = "<group>"; };
+		4F30DD201BFDC0220049A7BD /* LYUploadTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYUploadTool.m; sourceTree = "<group>"; };
 		4F32C6F81BF99DE700E31118 /* LYDownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYDownloadCell.h; sourceTree = "<group>"; };
 		4F32C6F91BF99DE700E31118 /* LYDownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYDownloadCell.m; sourceTree = "<group>"; };
 		4F32C6FA1BF99DE700E31118 /* LYDownloadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LYDownloadCell.xib; sourceTree = "<group>"; };
@@ -143,6 +152,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F30DD171BFC75A80049A7BD /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				4FFB841C1BF3443F00D3A557 /* LYSliderView.h */,
+				4FFB841D1BF3443F00D3A557 /* LYSliderView.m */,
+				4F30DD181BFC75D50049A7BD /* LYBottomView.h */,
+				4F30DD191BFC75D50049A7BD /* LYBottomView.m */,
+			);
+			name = CustomView;
+			sourceTree = "<group>";
+		};
+		4F30DD1B1BFDBFE30049A7BD /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				4F30DD1C1BFDC00F0049A7BD /* LYDownloadTool.h */,
+				4F30DD1D1BFDC00F0049A7BD /* LYDownloadTool.m */,
+				4F30DD1F1BFDC0220049A7BD /* LYUploadTool.h */,
+				4F30DD201BFDC0220049A7BD /* LYUploadTool.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		4F32C6F51BF992C900E31118 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,11 +285,11 @@
 		4FFB841B1BF3437800D3A557 /* Unitils */ = {
 			isa = PBXGroup;
 			children = (
+				4F30DD1B1BFDBFE30049A7BD /* Tools */,
+				4F30DD171BFC75A80049A7BD /* CustomView */,
 				4FFB84241BF3821F00D3A557 /* Category */,
 				4FFB84401BF46DC700D3A557 /* Lib */,
 				4FFB84201BF36F8E00D3A557 /* Const */,
-				4FFB841C1BF3443F00D3A557 /* LYSliderView.h */,
-				4FFB841D1BF3443F00D3A557 /* LYSliderView.m */,
 			);
 			name = Unitils;
 			sourceTree = "<group>";
@@ -551,16 +582,19 @@
 				4F1AF8EC1BF58683000BA4B0 /* NSString+Hash.m in Sources */,
 				4F8134DA1BF2276B0003E9B3 /* AppDelegate.m in Sources */,
 				4FFB84271BF383FA00D3A557 /* UIView+Extention.m in Sources */,
+				4F30DD1E1BFDC00F0049A7BD /* LYDownloadTool.m in Sources */,
 				4FFB841E1BF3443F00D3A557 /* LYSliderView.m in Sources */,
 				4FFB842A1BF3841500D3A557 /* UIBarButtonItem+Extention.m in Sources */,
 				4FFB84371BF45BF100D3A557 /* LYVideoDownloadVC.m in Sources */,
 				4F32C7041BF9A01000E31118 /* LYDownloadModel.m in Sources */,
+				4F30DD211BFDC0220049A7BD /* LYUploadTool.m in Sources */,
 				4F32C6FB1BF99DE700E31118 /* LYDownloadCell.m in Sources */,
 				4F8134A31BF2260E0003E9B3 /* main.m in Sources */,
 				4F32C7001BF99E0C00E31118 /* LYDownloadExtentionCell.m in Sources */,
 				4FFB84301BF45A4300D3A557 /* LYDownLoadRootVC.m in Sources */,
 				4FFB843A1BF45C1500D3A557 /* LYImageDownloadVC.m in Sources */,
 				4F8134DE1BF228150003E9B3 /* AppTableViewController.m in Sources */,
+				4F30DD1A1BFC75D50049A7BD /* LYBottomView.m in Sources */,
 				4FFB842D1BF4559800D3A557 /* LYViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

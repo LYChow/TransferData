@@ -10,4 +10,16 @@
 
 @interface LYImageDownloadVC : LYViewController
 
+
+
+/*!
+ *  设置tableView的编辑状态
+ */
+@property(nonatomic,assign) BOOL tableViewEditing;
+
+
+/*!
+ *  设置全选、全不选状态
+ */
+@property(nonatomic,assign) BOOL selectedAll;
 @end

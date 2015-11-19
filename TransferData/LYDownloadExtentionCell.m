@@ -30,7 +30,7 @@
     // Configure the view for the selected state
 }
 
--(void)setExtentionModle:(LYDownloadModel *)extentionModel
+-(void)setExtentionModel:(LYDownloadModel *)extentionModel
 {
     _extentionModel = extentionModel;
     
@@ -38,14 +38,21 @@
     NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kBaseUrl,_extentionModel.image]];
     [self.videoCoverImageView sd_setImageWithURL:url  placeholderImage:[UIImage imageNamed:@"placeholder"]];
     self.nameLabel.text= _extentionModel.name;
-    self.videoLengthLabel.text=[NSString stringWithFormat:@"%@",_extentionModel.length];
-    
+    self.videoLengthLabel.text=[NSString stringWithFormat:@"时长:%@秒",_extentionModel.length];
 }
 
-- (IBAction)changedNormalStatus:(id)sender {
+- (IBAction)changedNormalStatus:(id)sender
+{
+    if ([_delegate respondsToSelector:@selector(changeToDownloadCellStatusWithCurrentModel:)]) {
+        [_delegate changeToDownloadCellStatusWithCurrentModel:_extentionModel];
+    }
 }
 
-- (IBAction)download:(id)sender {
+- (IBAction)download:(id)sender
+{
+    if ([_delegate respondsToSelector:@selector(downloadVideoWithCurrentModel:)]) {
+        [_delegate downloadVideoWithCurrentModel:_extentionModel];
+    }
 }
 
 - (IBAction)share:(id)sender {

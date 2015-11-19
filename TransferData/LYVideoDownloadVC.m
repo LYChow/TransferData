@@ -11,16 +11,22 @@
 #import "LYDownloadCell.h"
 #import "LYDownloadExtentionCell.h"
 #import "LYDownloadModel.h"
+#import "LYBottomView.h"
 
 static NSString *cellIndentifier =@"cellIndentifier";
 static NSString *cellExtentionIndentifier =@"cellExtentionIndentifier";
 
-@interface LYVideoDownloadVC()<UITableViewDataSource,UITableViewDelegate>
-{
-
-}
-
+@interface LYVideoDownloadVC()<UITableViewDataSource,UITableViewDelegate,LYDownloadCellDelegate,LYDownloadExtentionCellDelegate,LYBottomViewDelegate>
+/*!
+ *  显示Models的数组
+ */
 @property(nonatomic,strong) NSMutableArray  *modelList;
+
+@property(nonatomic,strong) LYDownloadModel  *selectedModel;
+
+@property(nonatomic,strong) UIBarButtonItem *leftItem;
+
+@property(nonatomic,strong) LYBottomView *bottomView;
 @end
 
 @implementation LYVideoDownloadVC
@@ -38,7 +44,10 @@ static NSString *cellExtentionIndentifier =@"cellExtentionIndentifier";
     [super viewDidLoad];
     [self initialization];
     [self createTableView];
+    [self createBottomView];
 }
+
+
 
 -(void)initialization
 {
@@ -89,6 +98,53 @@ static NSString *cellExtentionIndentifier =@"cellExtentionIndentifier";
     [self.tableView registerNib:[UINib nibWithNibName:@"LYDownloadExtentionCell" bundle:nil] forCellReuseIdentifier:cellExtentionIndentifier];
 }
 
+-(void)createBottomView
+{
+    _bottomView =[[LYBottomView alloc] init];
+    _bottomView.itemsImageArray =@[@"download",@"share",@"delete",@"more"];
+    _bottomView.itemsTitleArray =@[@"下载",@"分享",@"删除",@"更多"];
+    _bottomView.delegate=self;
+    [self.view addSubview:_bottomView];
+
+    [_bottomView setupItems];
+}
+
+/*!
+ *  设置tableView的编辑状态
+ */
+-(void)setTableViewEditing:(BOOL)tableViewEditing
+{
+    _tableViewEditing =tableViewEditing;
+    
+    if (_tableViewEditing)
+    {
+        [_bottomView popBottomView];
+        self.tableView.frame=CGRectMake(0, 0, kScreenWeight, kScreenHeight-44-64-bottomHeight);
+    }
+    else
+    {
+        [_bottomView hiddenBottomView];
+        self.tableView.frame=CGRectMake(0, 0, kScreenWeight, kScreenHeight-44-64);
+        
+    }
+    
+    [self.tableView reloadData];
+}
+
+/*!
+ *  设置全选、全不选状态
+ */
+-(void)setSelectedAll:(BOOL)selectedAll
+{
+    _selectedAll=selectedAll;
+    for (LYDownloadModel *model in self.modelList)
+    {
+        model.isSelected=_selectedAll;
+    }
+    
+    [self.tableView reloadData];
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LYDownloadModel *model =[self.modelList objectAtIndex:indexPath.row];
@@ -96,14 +152,20 @@ static NSString *cellExtentionIndentifier =@"cellExtentionIndentifier";
     if (model.isExtentionStatus)
     {
        LYDownloadExtentionCell *cell =[tableView dequeueReusableCellWithIdentifier:cellExtentionIndentifier];
+        cell.delegate=self;
         cell.extentionModel =model;
         return cell;
     }
     else
     {
        LYDownloadCell *cell =[tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+        cell.delegate=self;
         cell.model=model;
-           return cell;
+        cell.isEditingCell=_tableViewEditing;
+        //全选、不全选
+        cell.circleButton.selected=model.isSelected;
+        
+        return cell;
     }
 }
 
@@ -118,5 +180,74 @@ static NSString *cellExtentionIndentifier =@"cellExtentionIndentifier";
     LYDownloadModel *model =[self.modelList objectAtIndex:indexPath.row];
     return model.isExtentionStatus?122:67;
 }
+
+#pragma -mark  LYDownloadCellDelegate
+
+-(void)changeToDownloadExtentionCellStatusWithCurrentModel:(LYDownloadModel *)model
+{
+     //之前选中的cell状态改为收缩
+    _selectedModel.isExtentionStatus=NO;
+      //当前正在操作的cell状态改为展开
+    model.isExtentionStatus=YES;
+    
+    _selectedModel=model;
+    [self.tableView reloadData];
+}
+
+
+#pragma -matk  LYDownloadExtentionCellDelegate
+
+//
+-(void)changeToDownloadCellStatusWithCurrentModel:(LYDownloadModel *)model
+{
+    //之前选中的cell状态改为收缩
+    _selectedModel.isExtentionStatus=NO;
+    //当前正在操作的cell状态改为收缩
+    model.isExtentionStatus=NO;
+    
+    _selectedModel =model;
+    [self.tableView reloadData];
+    
+}
+
+//下载当前model对应的视频文件
+-(void)downloadVideoWithCurrentModel:(LYDownloadModel *)model
+{
+
+}
+
+#pragma mark LYBottomDelegate
+-(void)bottomView:(LYBottomView *)bottomView tapItemIndex:(NSInteger)index
+{
+    NSMutableArray *selectedList =[NSMutableArray array];
+    switch (index) {
+        case 0:
+            //下载
+        {
+            for (LYDownloadModel *model in self.modelList) {
+                if (model.isSelected)
+                {
+                    [selectedList addObject:model];
+                }
+            }
+            
+            NSLog(@"选中的list---%@",selectedList);
+        }
+            break;
+        case 1:
+            //分享
+            break;
+        case 2:
+            //删除
+            break;
+        case 3:
+            //更多
+            
+            break;
+        default:
+            break;
+    }
+}
+
 
 @end

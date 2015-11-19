@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "LYDownloadModel.h"
 
+@protocol LYDownloadExtentionCellDelegate <NSObject>
+-(void)changeToDownloadCellStatusWithCurrentModel:(LYDownloadModel *)model;
+
+-(void)downloadVideoWithCurrentModel:(LYDownloadModel *)model;
+@end
+
 @interface LYDownloadExtentionCell : UITableViewCell
 
 @property(nonatomic,strong) LYDownloadModel  *extentionModel;
+
+@property(nonatomic,weak) id <LYDownloadExtentionCellDelegate> delegate;
 
 - (IBAction)changedNormalStatus:(id)sender;
 

@@ -276,6 +276,9 @@ typedef enum : NSUInteger {
     _mainScrollView.contentOffset=CGPointMake(index *kScreenWeight, 0);
     }];
 
+    if ([_delegate respondsToSelector:@selector(sliderView:didScrollViewControllerAtIndex:)]) {
+        [_delegate sliderView:self didScrollViewControllerAtIndex:index];
+    }
 }
 
 

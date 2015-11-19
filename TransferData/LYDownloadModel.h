@@ -42,5 +42,10 @@
  */
 @property(nonatomic, assign) BOOL isExtentionStatus;
 
+/*!
+ *  是否是下载状态
+ */
+@property(nonatomic, assign) BOOL isStart;
+
 +(instancetype)initModelWithDictionary:(NSDictionary *)dict;
 @end
