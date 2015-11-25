@@ -55,6 +55,8 @@ static NSString *cellExtentionIndentifier =@"cellExtentionIndentifier";
     [super initialization];
     
     NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kBaseUrl,@"video"]];
+
+    NSLog(@"url---%@",url);
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     

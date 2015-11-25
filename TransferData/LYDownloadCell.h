@@ -34,9 +34,9 @@
 
 @property(nonatomic,weak) id <LYDownloadCellDelegate> delegate;
 
-//@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
-//
-//- (IBAction)uploadCurrentVideo:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
+
+- (IBAction)uploadCurrentVideo:(id)sender;
 
 - (IBAction)changedExtentionStatus:(id)sender;
 

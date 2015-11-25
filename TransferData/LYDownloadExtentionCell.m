@@ -54,10 +54,14 @@
     }
 }
 
-- (IBAction)share:(id)sender {
+- (IBAction)share:(id)sender
+{
+    
 }
 
-- (IBAction)deleteCurrentModel:(id)sender {
+- (IBAction)deleteCurrentModel:(id)sender
+{
+    
 }
 
 - (IBAction)more:(id)sender

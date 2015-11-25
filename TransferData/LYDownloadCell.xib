@@ -69,10 +69,23 @@
                         <color key="textColor" red="0.40392156862745099" green="0.40392156862745099" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ztq-NT-IQF">
+                        <rect key="frame" x="273" y="18.5" width="30" height="30"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="NhS-Jj-eVs"/>
+                            <constraint firstAttribute="height" constant="30" id="pJS-ya-Ta5"/>
+                        </constraints>
+                        <state key="normal" image="upload_cloud"/>
+                        <connections>
+                            <action selector="uploadCurrentVideo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W07-X0-qaG"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <animations/>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="rzM-Gn-cOZ" secondAttribute="trailing" constant="10" id="2hO-7V-NTl"/>
+                    <constraint firstItem="Ztq-NT-IQF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3P9-OZ-sHg"/>
                     <constraint firstItem="XeX-Vd-wTU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="6W3-uO-Gid"/>
                     <constraint firstAttribute="trailingMargin" secondItem="gx2-eY-3M2" secondAttribute="trailing" constant="39" id="Gd1-dJ-qow"/>
                     <constraint firstAttribute="bottomMargin" secondItem="XeX-Vd-wTU" secondAttribute="bottom" constant="-8" id="L6M-Jb-Vgm"/>
@@ -86,6 +99,7 @@
                     <constraint firstItem="gx2-eY-3M2" firstAttribute="top" secondItem="PhH-sz-cXl" secondAttribute="top" id="fmZ-hF-fIa"/>
                     <constraint firstItem="vpt-bk-G1M" firstAttribute="bottom" secondItem="PhH-sz-cXl" secondAttribute="bottom" id="peg-eu-caH"/>
                     <constraint firstItem="PhH-sz-cXl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="s5r-HS-3QO"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ztq-NT-IQF" secondAttribute="trailing" constant="9" id="uQA-WJ-t6J"/>
                     <constraint firstItem="PhH-sz-cXl" firstAttribute="leading" secondItem="UMh-Wn-aKs" secondAttribute="trailing" constant="14" id="xfy-k9-IF8"/>
                 </constraints>
             </tableViewCellContentView>
@@ -96,6 +110,7 @@
                 <outlet property="circleButton" destination="UMh-Wn-aKs" id="pSt-8g-nkZ"/>
                 <outlet property="imageViewLeadingX" destination="PFY-fZ-ile" id="NBX-T9-gXi"/>
                 <outlet property="nameLabel" destination="gx2-eY-3M2" id="KzY-nn-0yi"/>
+                <outlet property="uploadButton" destination="Ztq-NT-IQF" id="QBM-dk-DHe"/>
                 <outlet property="videoCoverImageView" destination="PhH-sz-cXl" id="khd-Mm-WyB"/>
                 <outlet property="videoLengthLabel" destination="vpt-bk-G1M" id="A4U-9u-c8b"/>
             </connections>
@@ -106,5 +121,6 @@
         <image name="check" width="72" height="72"/>
         <image name="check_selected" width="72" height="72"/>
         <image name="down" width="72" height="72"/>
+        <image name="upload_cloud" width="178" height="95"/>
     </resources>
 </document>

@@ -170,11 +170,10 @@ didFinishDownloadingToURL:(NSURL *)location
             [self.downloadList removeObject:model];
             //下载另一条数据
             [self downloadQueueWithDownloadList];
-            self.task =nil;
-            _hadWrittenLength =0;
         }
     }
-    
+    self.task =nil;
+    _hadWrittenLength =0;
     
     //下载完成时,移动文件到自定义文件夹
    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:downloadTask.response.suggestedFilename];

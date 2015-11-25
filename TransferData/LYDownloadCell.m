@@ -9,7 +9,7 @@
 #import "LYDownloadCell.h"
 #import "LYConst.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "LYUploadTool.h"
 @interface LYDownloadCell ()
 
 /*!
@@ -74,4 +74,23 @@
     _model.isSelected=!_model.isSelected;
     self.circleButton.selected=_model.isSelected;
 }
+
+- (IBAction)uploadCurrentVideo:(id)sender
+{
+    NSFileManager *fileManager =[NSFileManager defaultManager];
+    
+   NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[self.model.url lastPathComponent]];
+
+    if ([fileManager fileExistsAtPath:filePath])
+    {
+        LYUploadTool *upload =[[LYUploadTool alloc] init];
+        NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kBaseUrl,@"upload"]];
+        [upload uploadFileToUrl:url filePath:filePath params:nil uploadSuccess:^(id respond) {
+            NSLog(@"上传成功---%@",respond);
+        } uploadFailue:^(NSError *error) {
+            NSLog(@"上传失败---%@",error);
+        }];
+    }
+}
+
 @end

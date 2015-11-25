@@ -10,8 +10,9 @@
 #import <SSZipArchive.h>
 #import <AFHTTPSessionManager.h>
 
+#define boundary                 @"zhouluyao"
 #define boundaryWithSpecisChar   [@"zhouluyao" dataUsingEncoding:NSUTF8StringEncoding]
-#define breakLine                [@"\n\r" dataUsingEncoding:NSUTF8StringEncoding]
+#define breakLine                [@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]
 #define dataEncodingWithString(var) [var dataUsingEncoding:NSUTF8StringEncoding]
 
 #define kServerParamName   @"file"
@@ -87,7 +88,7 @@
     
     request.HTTPBody = body;
     //3.设置请求头
-    NSString *contentType =[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundaryWithSpecisChar];
+    NSString *contentType =[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
     //4.发送请求
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
@@ -120,12 +121,12 @@
     
     
     NSString *fileName =[filePath lastPathComponent];
-    NSString *fileDisposition =[NSString stringWithFormat:@"content-Disposition :form-data; name=\"file\"; filename = \"%@\"",fileName];
+    NSString *fileDisposition =[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%@\"",fileName];
     [body appendData:dataEncodingWithString(fileDisposition)];
     [body appendData:breakLine];
     
     NSString *mimeType =[self mimeTypeWithFilePath:filePath];
-    NSString *contentType =[NSString stringWithFormat:@"content-Type:\"%@\"",mimeType];
+    NSString *contentType =[NSString stringWithFormat:@"content-Type: %@",mimeType];
     [body appendData:dataEncodingWithString(contentType)];
     [body appendData:breakLine];
     
@@ -139,7 +140,8 @@
         [body appendData:dataEncodingWithString(@"--")];
         [body appendData:boundaryWithSpecisChar];
         [body appendData:breakLine];
-        NSString *disposition =[NSString stringWithFormat:@"content-Disposition: formdata ;name=\"%@\"",key];
+        
+        NSString *disposition =[NSString stringWithFormat:@"content-Disposition: form-data ;name=\"%@\"",key];
         [body appendData:dataEncodingWithString(disposition)];
         [body appendData:breakLine];
         
@@ -155,12 +157,22 @@
     [body appendData:boundaryWithSpecisChar];
     [body appendData:dataEncodingWithString(@"--")];
     [body appendData:breakLine];
+    
+    request.HTTPBody=body;
     //3.设置请求头
-    NSString *requestHeader =@"mutipart/formdata ;boundary = \"%@\"";
+    NSString *requestHeader =[NSString stringWithFormat:@"multipart/form-data ;boundary =%@",boundary];
     [request setValue:requestHeader forHTTPHeaderField:@"content-Type"];
     //4.发送请求
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-        
+       
+        if (connectionError)
+        {
+            failue(connectionError);
+        }
+        else
+        {
+            success(response);
+        }
     }];
 }
 
@@ -196,7 +208,8 @@
 //根据文件的路径获取file 的MimeType
 -(NSString *)mimeTypeWithFilePath:(NSString *)filePath
 {
-    NSURL *url =[[NSBundle mainBundle] URLForResource:filePath withExtension:nil];
+//    NSURL *url =[[NSBundle mainBundle] URLForResource:filePath withExtension:nil];
+    NSURL *url =[[NSURL alloc] initFileURLWithPath:filePath];
     NSURLRequest *request =[NSURLRequest requestWithURL:url];
     
     NSURLResponse *response =nil;

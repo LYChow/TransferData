@@ -77,19 +77,27 @@
     NSURL *url =[NSURL URLWithString:urlStr];
     NSData *fileData = UIImagePNGRepresentation(self.chooseImageView.image);
     
-    //1.AFNetworking实现上传功能
-    [upload uploadDataWithAFNetworkingUsesToUrl:urlStr parameters:nil fileData:fileData fileName:@"A.png" mimeType:@"image/png" uploadSuccess:^(id respond) {
-        NSLog(@"上传成功---%@",respond);
-    } uploadFailue:^(NSError *error) {
-        NSLog(@"上传失败---%@",error);
-    }];
+//    //1.AFNetworking实现上传功能
+//    [upload uploadDataWithAFNetworkingUsesToUrl:urlStr parameters:nil fileData:fileData fileName:@"A.png" mimeType:@"image/png" uploadSuccess:^(id respond) {
+//        NSLog(@"上传成功---%@",respond);
+//    } uploadFailue:^(NSError *error) {
+//        NSLog(@"上传失败---%@",error);
+//    }];
+//    
+//    //2.上传本地绝对路径的文件
+//    NSString *filePath=@"/Users/lychow/Library/Developer/CoreSimulator/Devices/8BDE3ADB-B553-419B-8EA1-139DCB3E813C/data/Containers/Data/Application/047CF96E-EA81-4B08-B429-7D9600F194C4/Library/Caches/minion_02.mp4";
+//    [upload uploadFileToUrl:url filePath:filePath params:nil uploadSuccess:^(id respond) {
+//        NSLog(@"上传成功---%@",respond);
+//    } uploadFailue:^(NSError *error) {
+//        NSLog(@"上传失败---%@",error);
+//    }];
     
-    //2.上传本地绝对路径的文件
-    NSString *filePath=@"";
-    [upload uploadFileToUrl:url filePath:filePath params:nil uploadSuccess:^(id respond) {
-        NSLog(@"上传成功---%@",respond);
+   
+    //3.上传从相册 直接拍照的数据
+    [upload uploadDatatoUrl:url imageData:UIImagePNGRepresentation(self.chooseImageView.image) fileName:@"photoOrCamera.png" params:nil uploadSuccess:^(id respond) {
+        
     } uploadFailue:^(NSError *error) {
-        NSLog(@"上传失败---%@",error);
+        
     }];
 }
 

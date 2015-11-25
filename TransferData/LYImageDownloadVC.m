@@ -94,10 +94,10 @@ static NSString *cellIndentifier =@"cellIndentifier";
     cell.model=model;
     cell.changeCellStatusSignBtn.hidden=YES;
     
-    cell.progress.hidden=NO;
-    if (model.isCompleted) {
-        cell.progress.text=@"下载完成";
-    }
+    cell.uploadButton.hidden=NO;
+//    if (model.isCompleted) {
+//       
+//    }
     //全选、不全选
     cell.circleButton.selected=model.isSelected;
     return cell;
@@ -125,7 +125,7 @@ static NSString *cellIndentifier =@"cellIndentifier";
         NSInteger index =[self.downloadList indexOfObject:model];
         NSIndexPath *indexPath =[NSIndexPath indexPathForRow:index inSection:0];
         LYDownloadCell *cell =[self.tableView cellForRowAtIndexPath:indexPath];
-        cell.progress.text=[NSString stringWithFormat:@"%f",progress];
+        NSLog(@"下载进度---%f",progress);
     }
    
 }
